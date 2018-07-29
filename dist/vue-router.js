@@ -1,6 +1,6 @@
 /**
   * vue-router v3.0.1
-  * (c) 2017 Evan You
+  * (c) 2018 Evan You
   * @license MIT
   */
 (function (global, factory) {
@@ -116,7 +116,7 @@ var View = {
 
     return h(component, data, children)
   }
-};
+}
 
 function resolveProps (route, config) {
   switch (typeof config) {
@@ -243,7 +243,6 @@ function stringifyQuery (obj) {
 }
 
 /*  */
-
 
 var trailingSlashRE = /\/?$/;
 
@@ -485,7 +484,7 @@ var Link = {
 
     return h(this.tag, data, this.$slots.default)
   }
-};
+}
 
 function guardEvent (e) {
   // don't redirect with control keys
@@ -1074,7 +1073,6 @@ function pathToRegexp (path, keys, options) {
 
   return stringToRegexp(/** @type {string} */ (path), /** @type {!Array} */ (keys), options)
 }
-
 pathToRegexp_1.parse = parse_1;
 pathToRegexp_1.compile = compile_1;
 pathToRegexp_1.tokensToFunction = tokensToFunction_1;
@@ -1270,7 +1268,6 @@ function normalizePath (path, parent, strict) {
 
 /*  */
 
-
 function normalizeLocation (
   raw,
   current,
@@ -1333,6 +1330,7 @@ function assign (a, b) {
 }
 
 /*  */
+
 
 
 function createMatcher (
@@ -1529,7 +1527,6 @@ function resolveRecordPath (path, record) {
 }
 
 /*  */
-
 
 var positionStore = Object.create(null);
 
@@ -1913,14 +1910,15 @@ History.prototype.confirmTransition = function confirmTransition (route, onCompl
     }
     onAbort && onAbort(err);
   };
-  if (
-    isSameRoute(route, current) &&
-    // in the case the route map has been dynamically appended to
-    route.matched.length === current.matched.length
-  ) {
-    this.ensureURL();
-    return abort()
-  }
+  // NOTE(sethlu): This is suppressed to allow navigating to same route
+  // if (
+  // isSameRoute(route, current) && 
+  // // in the case the route map has been dynamically appended to
+  // route.matched.length === current.matched.length
+  // ) {
+  // this.ensureURL()
+  // return abort()
+  // }
 
   var ref = resolveQueue(this.current.matched, route.matched);
     var updated = ref.updated;
@@ -2139,7 +2137,6 @@ function poll (
 
 /*  */
 
-
 var HTML5History = (function (History$$1) {
   function HTML5History (router, base) {
     var this$1 = this;
@@ -2226,7 +2223,6 @@ function getLocation (base) {
 }
 
 /*  */
-
 
 var HashHistory = (function (History$$1) {
   function HashHistory (router, base, fallback) {
@@ -2365,7 +2361,6 @@ function replaceHash (path) {
 
 /*  */
 
-
 var AbstractHistory = (function (History$$1) {
   function AbstractHistory (router, base) {
     History$$1.call(this, router, base);
@@ -2423,6 +2418,8 @@ var AbstractHistory = (function (History$$1) {
 }(History));
 
 /*  */
+
+
 
 var VueRouter = function VueRouter (options) {
   if ( options === void 0 ) options = {};
